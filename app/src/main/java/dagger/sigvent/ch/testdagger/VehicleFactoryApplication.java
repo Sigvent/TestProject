@@ -4,7 +4,7 @@ import android.app.Application;
 
 import dagger.sigvent.ch.testdagger.component.DaggerVehicleFactoryComponent;
 import dagger.sigvent.ch.testdagger.component.VehicleFactoryComponent;
-import dagger.sigvent.ch.testdagger.module.VehicleModule;
+import dagger.sigvent.ch.testdagger.module.VehicleFactoryModule;
 
 /**
  * Created by Jacky on 27.07.2016.
@@ -16,7 +16,7 @@ public class VehicleFactoryApplication extends Application{
     @Override public void onCreate() {
         super.onCreate();
         component = DaggerVehicleFactoryComponent.builder()
-                .vehicleModule(new VehicleModule())
+                .vehicleFactoryModule(new VehicleFactoryModule())
                 .build();
     }
 

@@ -1,7 +1,9 @@
 package dagger.sigvent.ch.testdagger;
 
+import android.util.Log;
+
 import javax.inject.Inject;
-import javax.inject.Named;
+import javax.inject.Singleton;
 
 import dagger.sigvent.ch.testdagger.models.VehicleFactory;
 
@@ -9,13 +11,16 @@ import dagger.sigvent.ch.testdagger.models.VehicleFactory;
  * Created by Jacky on 28.07.2016.
  */
 
-@PerActivity
+@Singleton
 public class VehiclePresenter {
+    public static final String TAG = "VehiclePresenter";
+
     protected VehicleFactory vehicleFactory;
+    private IVehicle vehicle;
     private VehicleView vehicleView;
 
     @Inject
-    public VehiclePresenter(@Named("vehicleFactory") VehicleFactory vehicleFactory){
+    public VehiclePresenter(VehicleFactory vehicleFactory){
         this.vehicleFactory = vehicleFactory;
     }
 
@@ -24,8 +29,23 @@ public class VehiclePresenter {
     }
 
     public void getVehicle(){
-        IVehicle vehicle = vehicleFactory.getVehicle();
+        Log.d(TAG, "vehicleFactory null ? "+(vehicleFactory==null));
+        Log.d(TAG, "vehicleView null ? "+(vehicleView==null));
+        this.vehicle = vehicleFactory.getVehicle();
+        Log.d(TAG, "vehicle null ? "+(vehicle==null));
         vehicleView.setName(vehicle.getName());
         vehicleView.setSpeed(vehicle.getSpeed());
     }
+
+    public void accelerate(){
+        vehicle.increaseSpeed(10);
+        vehicleView.setSpeed(vehicle.getSpeed());
+    }
+
+    public void decelerate(){
+        vehicle.decreaseSpeed(10);
+        vehicleView.setSpeed(vehicle.getSpeed());
+    }
+
+
 }

@@ -2,23 +2,23 @@ package dagger.sigvent.ch.testdagger.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import javax.inject.Inject;
 
-import dagger.sigvent.ch.testdagger.IVehicle;
-import dagger.sigvent.ch.testdagger.IVehicleFactory;
 import dagger.sigvent.ch.testdagger.R;
 import dagger.sigvent.ch.testdagger.VehicleFactoryApplication;
+import dagger.sigvent.ch.testdagger.VehiclePresenter;
 import dagger.sigvent.ch.testdagger.VehicleView;
 
 public class MainActivity extends AppCompatActivity implements VehicleView {
-    @Inject
-    protected IVehicleFactory vehicleFactory;
+    public static final String TAG = "MainActivity";
 
-    private IVehicle vehicle;
+    @Inject
+    protected VehiclePresenter vehiclePresenter;
     private TextView tvVehicleName;
     private TextView tvVehicleSpeed;
     private Button btnGetVehicle;
@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity implements VehicleView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initializeInjection();
+
+        vehiclePresenter.setView(this);
 
         this.tvVehicleName = (TextView) findViewById(R.id.tv_vehicle_name);
         this.tvVehicleSpeed = (TextView) findViewById(R.id.tv_vehicle_speed);
@@ -39,27 +42,23 @@ public class MainActivity extends AppCompatActivity implements VehicleView {
         this.btnGetVehicle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vehicle = vehicleFactory.getVehicle();
-                tvVehicleName.setText(vehicle.getName());
-                tvVehicleSpeed.setText(getString(R.string.vehicle_speed,vehicle.getSpeed()));
+                Log.d(TAG, "vehiclePresenter null ? "+(vehiclePresenter==null));
+                vehiclePresenter.getVehicle();
             }
         });
         this.btnIncreaseSpeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vehicle.increaseSpeed(10);
-                tvVehicleSpeed.setText(getString(R.string.vehicle_speed,vehicle.getSpeed()));
+                vehiclePresenter.accelerate();
             }
         });
         this.btnDecreaseSpeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vehicle.decreaseSpeed(10);
-                tvVehicleSpeed.setText(getString(R.string.vehicle_speed,vehicle.getSpeed()));
+                vehiclePresenter.decelerate();
             }
         });
 
-        initializeInjection();
     }
 
     private void initializeInjection() {

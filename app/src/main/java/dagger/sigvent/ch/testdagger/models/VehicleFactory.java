@@ -1,5 +1,6 @@
 package dagger.sigvent.ch.testdagger.models;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import dagger.sigvent.ch.testdagger.IVehicle;
@@ -12,8 +13,11 @@ import dagger.sigvent.ch.testdagger.IVehicleFactory;
 public class VehicleFactory implements IVehicleFactory {
     private int nameValue = 0;
 
+    @Inject
+    public VehicleFactory(){}
+
     enum VehicleName {
-        Audi, BMW, Renault, Pegeot, Mercedes;
+        Audi, BMW, Renault, Peugeot, Mercedes;
     }
 
     @Override

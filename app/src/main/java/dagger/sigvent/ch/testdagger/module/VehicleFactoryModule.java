@@ -11,10 +11,11 @@ import dagger.sigvent.ch.testdagger.models.VehicleFactory;
  * Created by Jacky on 27.07.2016.
  */
 @Module
-public class VehicleModule {
+public class VehicleFactoryModule {
+
     @Provides
     @Singleton
-    IVehicleFactory provideVehicleFactory(){
-        return new VehicleFactory();
+    IVehicleFactory provideVehicleFactory(VehicleFactory vf) {
+        return vf;
     }
 }
