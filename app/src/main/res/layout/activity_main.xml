@@ -43,4 +43,19 @@
         android:layout_alignParentRight="true"
         android:layout_below="@id/btn_increase_speed"
         android:text="Decrease 10 speed" />
+
+    <Button
+        android:id="@+id/hello_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/btn_decrease_speed"
+        android:text="Hello 1" />
+    <Button
+        android:id="@+id/hello_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_decrease_speed"
+        android:layout_toRightOf="@id/hello_1"
+        android:text="Hello 2" />
 </RelativeLayout>

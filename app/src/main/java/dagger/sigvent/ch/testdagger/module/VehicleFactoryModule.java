@@ -4,7 +4,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import dagger.sigvent.ch.testdagger.IVehicleFactory;
+import dagger.sigvent.ch.testdagger.models.view.IVehicleFactory;
 import dagger.sigvent.ch.testdagger.models.VehicleFactory;
 
 /**

@@ -1,6 +1,6 @@
 package dagger.sigvent.ch.testdagger.models;
 
-import dagger.sigvent.ch.testdagger.IVehicle;
+import dagger.sigvent.ch.testdagger.models.view.IVehicle;
 
 /**
  * Created by Jacky on 27.07.2016.

@@ -3,8 +3,8 @@ package dagger.sigvent.ch.testdagger.models;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import dagger.sigvent.ch.testdagger.IVehicle;
-import dagger.sigvent.ch.testdagger.IVehicleFactory;
+import dagger.sigvent.ch.testdagger.models.view.IVehicle;
+import dagger.sigvent.ch.testdagger.models.view.IVehicleFactory;
 
 /**
  * Created by Jacky on 27.07.2016.
