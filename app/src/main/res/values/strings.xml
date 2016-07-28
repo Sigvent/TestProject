@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TestDagger</string>
+    <string name="nb_vehicle">%1$s vehicle</string>
+    <string name="vehicle_speed">%1$s rpm</string>
+</resources>
