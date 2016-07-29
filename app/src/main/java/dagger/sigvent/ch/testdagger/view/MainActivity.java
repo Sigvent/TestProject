@@ -3,8 +3,11 @@ package dagger.sigvent.ch.testdagger.view;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
@@ -37,6 +40,9 @@ public class MainActivity extends AppCompatActivity implements VehicleView {
     @BindView(R.id.btn_decrease_speed)
     protected Button btnDecreaseSpeed;
 
+    @BindView(R.id.iv_vehicle)
+    protected ImageView ivVehicle;
+
 
     @BindString(R.string.vehicle_speed)
     String speed;
@@ -62,12 +68,22 @@ public class MainActivity extends AppCompatActivity implements VehicleView {
 
     @Override
     public void setSpeed(int value) {
-        tvVehicleSpeed.setText(String.format(speed,value));
+        tvVehicleSpeed.setText(String.format(speed, value));
     }
 
     @Override
     public void showError(String error) {
         Toast.makeText(this, error, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void setVehicleView(String url) {
+        Picasso.with(this)
+                .load(url)
+                .fit()
+                .noPlaceholder()
+                .error(R.drawable.fake_vehicle)
+                .into(ivVehicle);
     }
 
     @OnClick(R.id.btn_get_vehicle)

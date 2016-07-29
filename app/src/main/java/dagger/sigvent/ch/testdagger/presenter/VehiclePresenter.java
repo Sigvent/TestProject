@@ -32,6 +32,7 @@ public class VehiclePresenter {
         this.vehicle = vehicleFactory.getVehicle();
         vehicleView.setName(vehicle.getName());
         vehicleView.setSpeed(vehicle.getSpeed());
+        vehicleView.setVehicleView(vehicle.getPictureUrl());
     }
 
 

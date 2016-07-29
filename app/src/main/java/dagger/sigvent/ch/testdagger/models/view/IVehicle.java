@@ -8,6 +8,8 @@ public interface IVehicle {
 
     int getSpeed();
 
+    String getPictureUrl();
+
     void increaseSpeed(int value);
 
     void decreaseSpeed(int value);

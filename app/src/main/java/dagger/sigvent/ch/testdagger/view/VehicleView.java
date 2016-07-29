@@ -7,4 +7,5 @@ public interface VehicleView {
     void setName(String name);
     void setSpeed(int value);
     void showError(String error);
+    void setVehicleView(String url);
 }
